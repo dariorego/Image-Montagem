@@ -1,0 +1,5 @@
+{
+  "name": "Image Montage Creator",
+  "description": "An application that takes two images and a text prompt to create a new, blended image montage using the Gemini API.",
+  "requestFramePermissions": []
+}
