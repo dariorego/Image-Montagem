@@ -56,20 +56,20 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setImage, id, titl
         />
         {image ? (
           <>
-            <img src={image} alt="Preview" className="w-full h-full object-cover" />
+            <img src={image} alt="Pré-visualização" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <button 
                 onClick={handleRemoveImage}
                 className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-500 transition-colors"
               >
-                Remove
+                Remover
               </button>
             </div>
           </>
         ) : (
           <div className="text-center">
             <UploadIcon />
-            <p className="mt-2 text-sm text-gray-400">Click to upload</p>
+            <p className="mt-2 text-sm text-gray-400">Clique para carregar</p>
           </div>
         )}
       </div>

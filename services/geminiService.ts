@@ -3,7 +3,7 @@ import { GoogleGenAI, Modality, GenerateContentResponse } from "@google/genai";
 const parseDataUrl = (dataUrl: string): { mimeType: string; data: string } => {
   const matches = dataUrl.match(/^data:(.+);base64,(.+)$/);
   if (!matches || matches.length !== 3) {
-    throw new Error("Invalid data URL format");
+    throw new Error("Formato de URL de dados inválido");
   }
   return { mimeType: matches[1], data: matches[2] };
 };
@@ -15,7 +15,7 @@ export const generateImageMontage = async (
 ): Promise<string> => {
   // Assume process.env.API_KEY is available
   if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable not set");
+    throw new Error("A variável de ambiente API_KEY não está definida");
   }
 
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
@@ -50,13 +50,13 @@ export const generateImageMontage = async (
       }
     }
 
-    throw new Error("No image was generated in the response.");
+    throw new Error("Nenhuma imagem foi gerada na resposta.");
 
   } catch (error) {
     console.error("Error calling Gemini API:", error);
     if (error instanceof Error) {
-        throw new Error(`Failed to generate image: ${error.message}`);
+        throw new Error(`Falha ao gerar a imagem: ${error.message}`);
     }
-    throw new Error("An unexpected error occurred while generating the image.");
+    throw new Error("Ocorreu um erro inesperado ao gerar a imagem.");
   }
 };

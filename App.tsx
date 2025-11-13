@@ -30,7 +30,7 @@ const App: React.FC = () => {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('An unknown error occurred.');
+        setError('Ocorreu um erro desconhecido.');
       }
       console.error(err);
     } finally {
@@ -47,19 +47,19 @@ const App: React.FC = () => {
           {/* Input Section */}
           <div className="flex flex-col gap-6 p-6 bg-gray-800/50 rounded-2xl shadow-lg">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <ImageUploader image={image1} setImage={setImage1} id="image1" title="Source Image 1" />
-              <ImageUploader image={image2} setImage={setImage2} id="image2" title="Source Image 2" />
+              <ImageUploader image={image1} setImage={setImage1} id="image1" title="Imagem Original 1" />
+              <ImageUploader image={image2} setImage={setImage2} id="image2" title="Imagem Original 2" />
             </div>
             
             <div>
               <label htmlFor="prompt" className="block text-sm font-medium text-indigo-300 mb-2">
-                Prompt
+                Comando
               </label>
               <textarea
                 id="prompt"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="e.g., A surreal painting of the first image's subject in the style of the second image's artist"
+                placeholder="ex: Uma pintura surreal do tema da primeira imagem no estilo do artista da segunda imagem"
                 className="w-full h-28 p-3 bg-gray-900 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200 resize-none placeholder-gray-500"
                 disabled={isLoading}
               />
@@ -70,7 +70,7 @@ const App: React.FC = () => {
               disabled={!canGenerate}
               className="w-full py-3 px-4 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-500 disabled:bg-gray-600 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105 disabled:scale-100"
             >
-              {isLoading ? 'Generating...' : 'Generate Montage'}
+              {isLoading ? 'Gerando...' : 'Gerar Montagem'}
             </button>
           </div>
 
@@ -80,24 +80,24 @@ const App: React.FC = () => {
             
             {error && !isLoading && (
               <div className="text-center text-red-400">
-                <p className="font-bold">Generation Failed</p>
+                <p className="font-bold">Falha na Geração</p>
                 <p className="text-sm mt-2">{error}</p>
               </div>
             )}
             
             {!isLoading && !generatedImage && !error && (
               <div className="text-center text-gray-500">
-                <p className="text-lg font-medium">Your creation will appear here</p>
-                <p className="mt-2">Upload two images and provide a prompt to begin.</p>
+                <p className="text-lg font-medium">Sua criação aparecerá aqui</p>
+                <p className="mt-2">Carregue duas imagens e forneça um comando para começar.</p>
               </div>
             )}
             
             {generatedImage && !isLoading && (
               <div className="w-full flex flex-col items-center gap-4">
-                <h3 className="text-xl font-semibold text-indigo-300">Result</h3>
+                <h3 className="text-xl font-semibold text-indigo-300">Resultado</h3>
                 <img 
                   src={generatedImage} 
-                  alt="Generated montage" 
+                  alt="Montagem gerada" 
                   className="max-w-full max-h-[500px] object-contain rounded-lg shadow-2xl" 
                 />
                  <a
@@ -105,7 +105,7 @@ const App: React.FC = () => {
                     download="montage.png"
                     className="mt-4 inline-block py-2 px-6 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-green-500 transition-all duration-200"
                   >
-                    Download Image
+                    Baixar Imagem
                   </a>
               </div>
             )}
